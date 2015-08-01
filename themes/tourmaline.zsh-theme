@@ -50,3 +50,4 @@ zle -N accept-line-or-clear-warning
 bindkey '^M' accept-line-or-clear-warning
 
 zstyle ':completion:*' insert-tab false
+
