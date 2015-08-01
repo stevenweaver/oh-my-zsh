@@ -16,7 +16,7 @@ local user="%(!.%{$fg[cyan]%}.%{$fg[cyan]%})%n%{$reset_color%}"
 
 # Hostname part.  compressed and colorcoded per host_repr array
 # if not found, regular hostname in default color
-local host="$fg[white]%}@$fg[white]%}${host_repr[$HOST]:-$HOST}%{$yellow%}"
+local host="@${host_repr[$HOST]:-$HOST}%{$reset_color%}"
 
 # Compacted $PWD
 local pwd="%{$fg[cyan]%}%c%{$reset_color%}"
@@ -26,8 +26,8 @@ PROMPT='${time} ${user}${host} ${pwd} $(git_prompt_info)'
 DISABLE_UNTRACKED_FILES_DIRTY=true;
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[bg_green]%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[bg_green]%} %{$fg[yellow]%}?%{$fg[green]%}%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%} %{$fg[yellow]%}?%{$fg[green]%}%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}"
 
 # elaborate exitcode on the right when >0
 return_code_enabled="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
@@ -48,3 +48,5 @@ function accept-line-or-clear-warning () {
 }
 zle -N accept-line-or-clear-warning
 bindkey '^M' accept-line-or-clear-warning
+
+zstyle ':completion:*' insert-tab false
